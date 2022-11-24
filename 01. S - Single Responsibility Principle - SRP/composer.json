@@ -1,0 +1,16 @@
+{
+    "name": "diego/app_carrinho_compras",
+    "description": "Projeto Carrinho de Compras",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Diego\\AppCarrinhoCompras\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Diego Maciel"
+        }
+    ],
+    "require": {}
+}
