@@ -4,12 +4,13 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Diego\\AppCarrinhoCompras\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Diego Maciel"
+            "name": "Diego Maciel",
+            "email": "dcunhamaciel@gmail.com"
         }
     ],
     "require": {}
