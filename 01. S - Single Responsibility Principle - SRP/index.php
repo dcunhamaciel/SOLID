@@ -3,29 +3,58 @@
 require __DIR__ . "/vendor/autoload.php";
 
 use src\CarrinhoCompra;
+use src\Item;
+use src\Pedido;
+use src\EmailService;
 
-$carrinho1 = new CarrinhoCompra();
+$pedido = new Pedido();
 
-print_r($carrinho1->exibirItens());
-echo "Valor total: " . $carrinho1->exibirValorTotal();
+$item1 = new Item();
+$item2 = new Item();
 
-$carrinho1->adicionarItem("Bicicleta", 750.10);
-$carrinho1->adicionarItem("Geladeira", 1950.15);
-$carrinho1->adicionarItem("Tapete", 350.20);
+$item1->setDescricao("Bicicleta");
+$item1->setValor(750.10);
 
-echo "<br>";
-print_r($carrinho1->exibirItens());
-echo "Valor total recalculado: " . $carrinho1->exibirValorTotal();
+$item2->setDescricao("Geladeira");
+$item2->setValor(1950.15);
 
-echo "<br>";
-echo "status: " . $carrinho1->exibirStatus();
+echo "<h4>Pedido Iniciado</h4>";
+echo "<pre>";
+print_r($pedido);
+echo "<pre>";
 
-echo "<br>";
-if ($carrinho1->confirmarPedido()) {
-    echo "Pedido realizado com sucesso!";
-} else {
-    echo "Erro na confirmação do pedido. Carrinho não possui itens.";
+$pedido->getCarrinhoCompra()->adicionarItem($item1);
+$pedido->getCarrinhoCompra()->adicionarItem($item2);
+
+echo "<h4>Pedido com Itens</h4>";
+echo "<pre>";
+print_r($pedido);
+echo "<pre>";
+
+echo "<h4>Itens do Carrinho</h4>";
+echo "<pre>";
+print_r($pedido->getCarrinhoCompra()->getItens());
+echo "<pre>";
+
+echo "<h4>Valor do Pedido</h4>";
+echo "<pre>";
+print_r($pedido->getValorTotal());
+echo "<pre>";
+
+echo "<h4>Carrinho está Valido?</h4>";
+echo $pedido->getCarrinhoCompra()->validarCarrinho();
+
+echo "<h4>Status Pedido</h4>";
+echo $pedido->getStatus();
+
+echo "<h4>Confirmar Pedido</h4>";
+echo $pedido->confirmarPedido();
+
+echo "<h4>Status Pedido</h4>";
+echo $pedido->getStatus();
+
+echo "<h4>E-Mail</h4>";
+if ($pedido->getStatus() == 'confirmado') {
+    $email = new EmailService('', '', '', '');
+    echo $email->enviarEmail();
 }
-
-echo "<br>";
-echo "status: " . $carrinho1->exibirStatus();

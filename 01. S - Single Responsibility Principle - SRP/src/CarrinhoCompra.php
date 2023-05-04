@@ -2,57 +2,27 @@
 
 namespace src;
 
+use src\Item;
+
 class CarrinhoCompra 
 {    
-    private $itens;
-    private $status;
-    private $valorTotal;
+    private $itens;    
 
     public function __construct() 
     {
         $this->itens = [];
-        $this->status = 'aberto';
-        $this->valorTotal = 0;
     }
 
-    public function exibirItens() 
+    public function getItens() 
     {
         return $this->itens;
     }
 
-    public function adicionarItem(string $item, float $valor) 
+    public function adicionarItem(Item $item) 
     {
-        array_push($this->itens, ["item" => $item, "valor" => $valor]);
-        $this->valorTotal += $valor;
+        array_push($this->itens, $item);
 
         return true;
-    }
-
-    public function exibirValorTotal() 
-    {
-        return $this->valorTotal;
-    }
-
-    public function exibirStatus()
-    {
-        return $this->status;
-    }
-
-    public function confirmarPedido() 
-    {
-        if (!$this->validarCarrinho()) {
-            return false;
-        }
-
-        $this->status = 'confirmado';
-        $this->enviarEmailConfirmacao();
-
-        return true;
-    }
-
-    public function enviarEmailConfirmacao() 
-    {
-        echo '<br/>.... envia e-mail de confirmação ...<br/>';
     }
 
     public function validarCarrinho() 
