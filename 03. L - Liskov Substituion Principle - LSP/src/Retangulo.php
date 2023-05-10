@@ -26,9 +26,4 @@ class Retangulo
     {
         $this->altura = $altura;
     }
-
-    public function getArea(): float
-    {
-        return $this->getLargura() * $this->getAltura();
-    }
 }
