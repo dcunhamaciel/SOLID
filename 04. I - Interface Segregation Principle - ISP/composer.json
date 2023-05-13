@@ -1,0 +1,17 @@
+{
+    "name": "diego/app_crm",
+    "description": "Projeto CRM",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Diego Maciel",
+            "email": "dcunhamaciel@gmail.com"
+        }
+    ],
+    "require": {}
+}
