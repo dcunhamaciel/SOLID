@@ -3,8 +3,21 @@
 namespace src\dao;
 
 use src\BD;
+use src\componentes\Log;
+use src\componentes\Notificacao;
+use src\interfaces\ICadastro;
 
-class UsuarioModel extends BD
+class UsuarioModel extends BD implements ICadastro
 {
+    public function salvar()
+    {
+    }
 
+    public function registrarLog(Log $log)
+    {
+    }
+
+    public function enviarNotificacao(Notificacao $notificacao)
+    {
+    }
 }
